@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Nexium — Anniversaire de Goubgoub</title>
+<meta name="description" content="Compte à rebours vers l'anniversaire de Goubgoub, le 24 décembre 2026.">
+<meta property="og:title" content="Nexium — Anniversaire de Goubgoub">
+<meta property="og:description" content="Le compte à rebours a commencé.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0605;
+    --bg2:#160907;
+    --deep:#3d0a0a;
+    --mid:#7a1414;
+    --bright:#d4302f;
+    --ember:#ff6a3d;
+    --text:#f7ece9;
+    --muted:#c19a94;
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  html,body{height:100%;margin:0;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Space Grotesk',sans-serif;
+    overflow-x:hidden;
+    position:relative;
+  }
+  canvas#embers{
+    position:fixed; inset:0; width:100%; height:100%;
+    z-index:0; pointer-events:none;
+  }
+  .glow{
+    position:fixed; inset:0; z-index:0;
+    background:radial-gradient(ellipse 60% 50% at 50% 100%, rgba(212,48,47,0.25), transparent 70%),
+               radial-gradient(ellipse 40% 30% at 80% 0%, rgba(122,20,20,0.2), transparent 70%);
+    pointer-events:none;
+  }
+
+
+  main{ position:relative; z-index:1; max-width:760px; margin:0 auto; padding:0 20px 60px; }
+  section{ display:none; animation:fade .5s ease; }
+  section.active{ display:block; }
+  @keyframes fade{ from{opacity:0; transform:translateY(8px);} to{opacity:1; transform:translateY(0);} }
+
+  .hero{ padding:14vh 0 8vh; text-align:center; }
+  h1{
+    font-family:'Archivo Black',sans-serif; font-weight:400;
+    font-size:clamp(2.6rem, 8vw, 4.6rem); line-height:1.05; margin:0 0 18px;
+    letter-spacing:-0.01em;
+    color:transparent;
+    filter:drop-shadow(0 0 10px rgba(255,255,255,0.6)) drop-shadow(0 0 26px var(--bright)) drop-shadow(0 0 55px var(--ember));
+    background:linear-gradient(90deg, #fff 0%, var(--ember) 25%, var(--bright) 50%, #fff 65%, var(--ember) 85%, #fff 100%);
+    background-size:280% 100%;
+    -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+    animation:neonSweep 11s linear infinite;
+  }
+  @keyframes neonSweep{
+    0%{ background-position:0% 0; }
+    100%{ background-position:-280% 0; }
+  }
+  @keyframes neonPulse{
+    from{
+      text-shadow:
+        0 0 6px rgba(255,255,255,0.6),
+        0 0 14px var(--bright),
+        0 0 28px var(--bright),
+        0 0 46px var(--ember),
+        0 0 70px rgba(212,48,47,0.5);
+    }
+    to{
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.9),
+        0 0 22px var(--ember),
+        0 0 40px var(--bright),
+        0 0 64px var(--ember),
+        0 0 100px rgba(212,48,47,0.7);
+    }
+  }
+  @media (prefers-reduced-motion: reduce){
+    h1{ animation:none; background-position:0% 0; }
+  }
+  .hero p{ color:var(--muted); font-size:1.15rem; font-weight:400; letter-spacing:0.01em; max-width:460px; margin:0 auto 34px; line-height:1.65; }
+  .cta{
+    display:inline-block; background:linear-gradient(135deg, var(--bright), var(--ember));
+    color:#1a0505; font-family:'Archivo Black',sans-serif; font-size:0.95rem;
+    font-weight:400; letter-spacing:0.02em;
+    padding:16px 44px; border-radius:999px; text-decoration:none;
+    box-shadow:0 8px 30px rgba(212,48,47,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition:transform .2s ease, box-shadow .2s ease;
+    border:none; cursor:pointer;
+  }
+  .cta:hover{ transform:translateY(-3px) scale(1.03); box-shadow:0 14px 38px rgba(212,48,47,0.55), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .cta:active{ transform:translateY(-1px) scale(0.99); }
+
+  .features{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:10vh; }
+  @media(max-width:520px){ .features{grid-template-columns:1fr;} }
+  .feature h3{ font-family:'Archivo Black',sans-serif; font-size:0.95rem; margin:0 0 10px; color:var(--ember); font-weight:400; letter-spacing:0.02em; }
+  .feature p{ color:var(--muted); font-size:0.95rem; font-weight:400; line-height:1.6; margin:0; }
+
+  h2.page-title{
+    font-family:'Archivo Black',sans-serif; font-size:1.6rem; font-weight:400; margin:8vh 0 28px; text-align:center;
+    color:#fff; text-shadow:0 0 12px var(--bright), 0 0 30px rgba(212,48,47,0.5);
+    letter-spacing:0.02em;
+  }
+
+  /* Countdown */
+  .countdown-wrap{ text-align:center; margin-top:4vh; }
+  .countdown-grid{ display:flex; justify-content:center; gap:18px; flex-wrap:wrap; }
+  .cd-unit{
+    background:rgba(20,10,9,0.6); border:1px solid rgba(212,48,47,0.3);
+    border-radius:8px; padding:22px 20px; min-width:100px;
+    box-shadow:0 0 24px rgba(212,48,47,0.15);
+  }
+  .cd-unit span{
+    display:block; font-family:'Archivo Black',sans-serif; font-size:2.4rem;
+    color:#fff; text-shadow:0 0 10px var(--bright), 0 0 24px rgba(212,48,47,0.6);
+  }
+  .cd-unit small{ display:block; margin-top:6px; color:var(--muted); font-size:0.75rem; letter-spacing:0.08em; text-transform:lowercase; }
+  .cd-target{ color:var(--muted); margin-top:32px; font-size:0.95rem; }
+  @media(max-width:480px){ .cd-unit{ min-width:72px; padding:16px 10px; } .cd-unit span{ font-size:1.8rem; } }
+
+  footer{ text-align:center; color:var(--muted); font-size:0.75rem; font-family:'Space Grotesk',sans-serif; font-weight:500; letter-spacing:0.12em; padding:30px 0 10px; position:relative; z-index:1; }
+
+  @media (prefers-reduced-motion: reduce){
+    canvas#embers{ display:none; }
+    section{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="embers"></canvas>
+<div class="glow"></div>
+
+<main>
+  <section id="home" class="active">
+    <div class="hero">
+      <h1>NEXIUM</h1>
+      <p>Un jour approche. Le compte à rebours a commencé.</p>
+      <button class="cta" onclick="goTo('chat')">Voir</button>
+    </div>
+    <div class="features">
+      <div class="feature">
+        <h3>Compte à rebours en direct</h3>
+        <p>Le temps restant se met à jour à chaque seconde, sans recharger la page.</p>
+      </div>
+      <div class="feature">
+        <h3>Toujours accessible</h3>
+        <p>Aucune inscription, aucune attente. Clique sur Voir et regarde le temps filer.</p>
+      </div>
+      <div class="feature">
+        <h3>Un jour spécial</h3>
+        <p>Le 24 décembre 2026, c'est l'anniversaire de Goubgoub.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="chat">
+    <h2 class="page-title">Anniversaire de Goubgoub</h2>
+    <div class="countdown-wrap">
+      <div class="countdown-grid">
+        <div class="cd-unit"><span id="cdDays">00</span><small>jours</small></div>
+        <div class="cd-unit"><span id="cdHours">00</span><small>heures</small></div>
+        <div class="cd-unit"><span id="cdMinutes">00</span><small>minutes</small></div>
+        <div class="cd-unit"><span id="cdSeconds">00</span><small>secondes</small></div>
+      </div>
+      <p class="cd-target">Rendez-vous le 24 décembre 2026</p>
+      <button class="cta" style="margin-top:34px" onclick="goTo('home')">Retour</button>
+    </div>
+  </section>
+</main>
+
+<footer>NEXIUM</footer>
+
+<script>
+  function goTo(page){
+    document.querySelectorAll('section').forEach(s=>s.classList.toggle('active', s.id===page));
+  }
+
+  // network particles background
+  const canvas = document.getElementById('embers');
+  const ctx = canvas.getContext('2d');
+  let W,H,particles=[];
+  function resize(){
+    W=canvas.width=innerWidth; H=canvas.height=innerHeight;
+    if(particles.length){
+      for(const p of particles){ p.x=Math.random()*W; p.y=Math.random()*H; }
+    }
+  }
+  resize(); addEventListener('resize', resize);
+  setTimeout(resize, 150);
+  function makeParticle(){
+    return {
+      x:Math.random()*W, y:Math.random()*H,
+      vx:(Math.random()-0.5)*0.35, vy:(Math.random()-0.5)*0.35,
+      r:1+Math.random()*1.8
+    };
+  }
+  const COUNT = 90;
+  const LINK_DIST = 130;
+  for(let i=0;i<COUNT;i++){ particles.push(makeParticle()); }
+  function tick(){
+    ctx.clearRect(0,0,W,H);
+    for(const p of particles){
+      p.x += p.vx; p.y += p.vy;
+      if(p.x<0||p.x>W) p.vx*=-1;
+      if(p.y<0||p.y>H) p.vy*=-1;
+    }
+    for(let i=0;i<particles.length;i++){
+      for(let j=i+1;j<particles.length;j++){
+        const a=particles[i], b=particles[j];
+        const dx=a.x-b.x, dy=a.y-b.y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<LINK_DIST){
+          ctx.strokeStyle = `rgba(212,48,47,${(1-dist/LINK_DIST)*0.35})`;
+          ctx.lineWidth = 1;
+          ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke();
+        }
+      }
+    }
+    for(const p of particles){
+      ctx.beginPath();
+      ctx.fillStyle = 'rgba(255,120,90,0.85)';
+      ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){ tick(); }
+
+  // compte à rebours vers le 24 décembre 2026
+  const target = new Date('2026-12-24T00:00:00');
+  function pad(n){ return String(n).padStart(2,'0'); }
+  function updateCountdown(){
+    const now = new Date();
+    let diff = target - now;
+    if(diff < 0) diff = 0;
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const minutes = Math.floor((diff % 3600000) / 60000);
+    const seconds = Math.floor((diff % 60000) / 1000);
+    document.getElementById('cdDays').textContent = pad(days);
+    document.getElementById('cdHours').textContent = pad(hours);
+    document.getElementById('cdMinutes').textContent = pad(minutes);
+    document.getElementById('cdSeconds').textContent = pad(seconds);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+</body>
+</html>
